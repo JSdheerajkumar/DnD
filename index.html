@@ -208,22 +208,57 @@
 		}
 	}
 	
-	function checkAnswers()
-	{
-		
-		for(var no=0;no<destinationBoxes.length;no++){
-			var subLis = destinationBoxes[no].getElementsByTagName('LI');
-			if(subLis.length<boxSizeArray[no])return;	
-			
-			for(var no2=0;no2<subLis.length;no2++){
-				if(subLis[no2].className=='wrongAnswer')return;
-			}		
+	function checkAnswers() {
+		let allCorrect = true;
+	
+		const dialogues = {
+			box1: ["Bazinga!", "I’m not crazy, my mother had me tested", "AOur babies will be smart and beautiful"],  // TBBT
+			box2: ["You’re my person", "Pick me. Choose me. Love me.", "It’s a beautiful day to save lives"],  // Grey's
+			box3: ["That's what she said", "I am Beyoncé, always", "I declare bankruptcy!"],  // Office
+			box4:  ["We were on a break!", "How you doin'?", "Pivot! Pivot! Pivot!"] // Friends
+		};
+	
+	
+		for (let boxId in dialogues) {
+			const ul = document.getElementById(boxId);
+			const lis = ul ? Array.from(ul.getElementsByTagName("LI")) : [];
+			const correctItems = dialogues[boxId];
+			const flag = document.getElementById(flagIdMap[boxId]);
+	
+			console.log(`Checking ${boxId}:`, lis.map(li => li.textContent));
+	
+			if (!flag) {
+				console.error(`Flag element for ${boxId} not found. Expected ID: ${flagIdMap[boxId]}`);
+				continue;
+			}
+	
+			// Check if all items in the box match the correct items
+			if (lis.length !== correctItems.length || !lis.every(li => correctItems.includes(li.textContent.trim()))) {
+				allCorrect = false;
+				flag.style.display = 'none';
+				console.log(`Hiding flag for ${boxId} because items do not match.`);
+			} else {
+				flag.style.display = 'block';
+				console.log(`Displaying flag for ${boxId}.`);
+			}
 		}
-		
-		everythingIsCorrect();
-		
-		
+	
+		// Show "Congratulations" message only if all boxes are correct
+		if (allCorrect) {
+			alert('Congratulations! All items are correctly placed!');
+		} else {
+			console.log("Not all items are correct.");
+		}
 	}
+	
+	
+	
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	
+	
+	
 	
 	
 	/* End dragging 
@@ -289,6 +324,8 @@
 			
 		}		
 		mouseoverObj = false;
+
+		checkAnswers();
 		
 	}
 	
@@ -372,10 +409,12 @@
 	
 	window.onload = initDragDropScript;
 	</script>
-</head><body>
-<h1 align="center">Learning Theories</h1>
-<p>Drag-n-drop concepts from the column in the appropriate Learning Theory box. Each box can contain only <span class="style1">3 items</span>.</p>
-<div id="dhtmlgoodies_dragDropContainer">
+</head>
+<body>
+	<div class="center-wrapper">
+        <h1 align="center"> Binge-Watchers' Trivia: Iconic TV Quotes Challenge</h1>
+        <p>Drag and drop the dialogues into the appropriate series box. Each box can contain only <span class="style1">3 items</span>.</p>    
+        <div id="dhtmlgoodies_dragDropContainer">
 	<div id="topBar">
 	<div style="padding-bottom: 5px; width: 728px; height: 1px;">
 
@@ -385,36 +424,54 @@
 		</div>
 	<div id="dhtmlgoodies_listOfItems">
 		<div class="">
-			<p>Concepts/Names</p>		
-		<ul id="allItems">
+			<p>Dialogues</p>		
+			<ul id="allItems">
+				<li id="node1" groupid="box1">Bazinga! </li>
+				<li id="node2" groupid="box1">I’m not crazy, my mother had me tested</li>
+				<li id="node3" groupid="box1">Our babies will be smart and beautiful</li>
 			
+				<li id="node4" groupid="box2">You’re my person</li>
+				<li id="node5" groupid="box2">Pick me. Choose me. Love me</li>
+				<li id="node6" groupid="box2">It’s a beautiful day to save lives</li>
 			
-		<li id="node7" groupid="box2">Working Memory</li><li class="" id="node15" groupid="box3">Knowledge building</li><li class="" id="node19" groupid="box1">Skinner</li>
-		<li id="node9" groupid="box1">Stimulus</li><li class="" id="node10" groupid="box2">Rehearsal</li><li class="" id="node8" groupid="box3">Piaget</li><li id="node3" groupid="box2">Rehearsal</li><li id="node2" groupid="box3">Vygotsky</li><li id="node16" groupid="box1">Reinforcement</li></ul>
+				<li id="node7" groupid="box3">That's what she said </li>
+				<li id="node8" groupid="box3">I am Beyoncé, always</li>
+				<li id="node9" groupid="box3">I declare bankruptcy</li>
+			
+				<li id="node10" groupid="box4">We were on a break! </li>
+				<li id="node11" groupid="box4">How you doin'? </li>
+				<li id="node12" groupid="box4">Pivot! Pivot! Pivot!</li>
+			</ul>
+			
 		</div>
 	</div>	
 	<div id="dhtmlgoodies_mainContainer">
-		<!-- ONE <UL> for each "room" -->
 		<div class="">
-			<p>Behaviorism</p>
-			<ul style="height: 72px;" id="box1">
-			</ul>
+			<p>The Big Bang Theory</p>
+			<ul style="height: 100px;" id="box1"></ul>
 		</div>
-		<div class="">		
-			<p>Cognitivism</p>
-			<ul style="height: 72px;" id="box2"></ul>
+	
+		<div class="">
+			<p>Grey's Anatomy</p>
+			<ul style="height: 100px;" id="box2"></ul>
 		</div>
-		
+	
 		<div>
-		  <p >Constructivism</p>
-			<ul style="height: 72px;" id="box3"></ul>
+			<p>The Office</p>
+			<ul style="height: 100px;" id="box3"></ul>
 		</div>
-		
-		
+	
+		<div>
+			<p>Friends</p>
+			<ul style="height: 100px;" id="box4"></ul>
+		</div>
 	</div>
+	
 </div>
 <ul style="left: 110px; top: 329px; display: block;" id="dragContent"></ul>
 <div style="display: none; left: 24px; top: 333px;" id="dragDropIndicator"><img src="insert.gif"></div>
 <div id="saveContent"></div>
 
-</span></body></html>
+</span>
+</div>
+</body></html>

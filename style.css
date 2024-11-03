@@ -1,162 +1,187 @@
-body{
-		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;	/* Font to use */
-		background-color:#E2EBED;
-	}
-	#footer{
-		height:30px;
-		vertical-align:middle;
-		text-align:right;
-		clear:both;
-		padding-right:3px;
-		background-color:#317082;
-		margin-top:2px;
-		width:790px;
-	}
-	#footer form{
-		margin:0px;
-		margin-top:2px;
-	}
-	#dhtmlgoodies_dragDropContainer{	/* Main container for this script */
-		width:790px;
-		height:770px;
-		border:1px solid #317082;
-		background-color:#FFF;
-		-moz-user-select:none;
-	}
-	#dhtmlgoodies_dragDropContainer ul{	/* General rules for all <ul> */
-		margin-top:0px;
-		margin-left:0px;
-		margin-bottom:0px;
-		padding:2px;
-	}
-	
-	#dhtmlgoodies_dragDropContainer li,#dragContent li,li#indicateDestination{	/* Movable items, i.e. <LI> */
-		list-style-type:none;
-		height:15px;
-		background-color:#FFFF99;
-		border:1px solid #000;
-		padding:2px;
-		margin-bottom:2px;
-		cursor:pointer;
-		font-size:13px;
-		line-height:15px;
-	}
+body {
+    font-family: 'Fredoka One'; /* or any playful font you've chosen */
+    background-color: #EEEAF4; /* Lavender Mist */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #4A4A4A; /* Deep Charcoal for text */
+}
 
-	li#indicateDestination{	/* Box indicating where content will be dropped - i.e. the one you use if you don't use arrow */
-		border:1px dotted #600;	
-		background-color:#FFF;
-	}
-		
-	#dhtmlgoodies_dragDropContainer ul li.correctAnswer{	/* Correctly moved item */
-		background-color:green;
-		color:#FFF;
-	}
-	#dhtmlgoodies_dragDropContainer ul li.wrongAnswer{	/* Item moved to wrong box */
-		background-color:red;
-		color:#FFF;
-	}
-	
-	
-	/* LEFT COLUMN CSS */
-	div#dhtmlgoodies_listOfItems{	/* Left column "Available students" */
-		
-		float:left;
-		padding-left:10px;
-		padding-right:10px;
-		
-		/* CSS HACK */
-		width: 180px;	/* IE 5.x */
-		width/* */:/**/160px;	/* Other browsers */
-		width: /**/160px;
-				
-	}
-	#dhtmlgoodies_listOfItems ul{	/* Left(Sources) column <ul> */
-		height:560px;	
+.center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF; /* Soft White background for containers */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
 
-	}
-		
-	div#dhtmlgoodies_listOfItems div{
-		border:1px solid #999;		
-	}
-	div#dhtmlgoodies_listOfItems div ul{	/* Left column <ul> */
-		margin-left:10px;	/* Space at the left of list - the arrow will be positioned there */
-	}
-	#dhtmlgoodies_listOfItems div p{	/* Heading above left column */
-		margin:0px;	
-		font-weight:bold;
-		padding-left:12px;
-		background-color:#317082;	
-		color:#FFF;
-		margin-bottom:5px;
-	}
-	/* END LEFT COLUMN CSS */
-	
-	#dhtmlgoodies_dragDropContainer .mouseover{	/* Mouse over effect DIV box in right column */
-		background-color:#E2EBED;
-		border:1px solid #317082;
-	}
-	
-	/* Start main container CSS */
-	
-	div#dhtmlgoodies_mainContainer{	/* Right column DIV */
-		width:590px;
-		float:left;	
-	}
-	#dhtmlgoodies_mainContainer div{	/* Parent <div> of small boxes */
-		float:left;
-		margin-right:10px;
-		margin-bottom:10px;
-		margin-top:0px;
-		border:1px solid #999;
+h1 {
+    color: #C5B4D9; /* Dusty Lavender for header */
+    font-size: 24px;
+    margin-bottom: 15px;
+}
 
-		/* CSS HACK */
-		width: 172px;	/* IE 5.x */
-		width/* */:/**/170px;	/* Other browsers */
-		width: /**/170px;
-				
-	}
-	#dhtmlgoodies_mainContainer div ul{
-		margin-left:10px;
-	}
-	
-	#dhtmlgoodies_mainContainer div p{	/* Heading above small boxes */
-		margin:0px;
-		padding:0px;
-		padding-left:12px;
-		font-weight:bold;
-		background-color:#317082;	
-		color:#FFF;	
-		margin-bottom:5px;
-	}
-	
-	#dhtmlgoodies_mainContainer ul{	/* Small box in right column ,i.e <ul> */
-		width:152px;
-		height:80px;	
-		border:0px;	
-		margin-bottom:0px;
-		overflow:hidden;
-		
-	}
-	
-	#dragContent{	/* Drag container */
-		position:absolute;
-		width:150px;
-		height:15px;
-		display:none;
-		margin:0px;
-		padding:0px;
-		z-index:2000;
-	}
+#dhtmlgoodies_dragDropContainer {
+    width: 790px;
+    height: auto;
+    border: 1px solid #C5B4D9; /* Dusty Lavender border */
+    background-color: #FFFFFF; /* Soft White */
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
 
-	#dragDropIndicator{	/* DIV for the small arrow */
-		position:absolute;
-		width:7px;
-		height:10px;
-		display:none;
-		z-index:1000;
-		margin:0px;
-		padding:0px;
-	}
-	.style1 {color: #FF0000}
+#footer {
+    height: 30px;
+    vertical-align: middle;
+    text-align: right;
+    clear: both;
+    padding-right: 3px;
+    background-color: #C5B4D9; /* Dusty Lavender */
+    color: #FFFFFF;
+    margin-top: 2px;
+    width: 790px;
+    border-radius: 0 0 12px 12px;
+}
 
-	
+#dhtmlgoodies_dragDropContainer ul {
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+#dhtmlgoodies_dragDropContainer li,
+#dragContent li,
+li#indicateDestination {
+    list-style-type: none;
+    background-color: #E5DBF2; /* Very Light Lavender for items */
+    border: 1px solid #D1C5E0; /* Light border for items */
+    padding: 6px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1.4em;
+    color: #4A4A4A; /* Deep Charcoal text */
+    white-space: normal;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+li#indicateDestination {
+    border: 1px dotted #C5B4D9; /* Dusty Lavender dotted border */
+    background-color: #FFFFFF; /* Soft White */
+    border-radius: 8px;
+}
+
+#dhtmlgoodies_dragDropContainer ul li.correctAnswer {
+    background-color: #A8D5BA; /* Pastel Green for correct answers */
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#dhtmlgoodies_dragDropContainer ul li.wrongAnswer {
+    background-color: #F5B7B1; /* Light Coral for wrong answers */
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#dhtmlgoodies_listOfItems {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 160px;
+}
+
+#dhtmlgoodies_listOfItems ul {
+    height: 560px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#dhtmlgoodies_listOfItems div {
+    border: 1px solid #C5B4D9;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+
+#dhtmlgoodies_listOfItems div p {
+    margin: 5px;
+    font-weight: bold;
+    padding-left: 12px;
+    background-color: #C5B4D9; /* Dusty Lavender for section headers */
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+#dhtmlgoodies_mainContainer {
+    width: 590px;
+    float: left;
+    border-radius: 8px;
+}
+
+#dhtmlgoodies_mainContainer div {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    vertical-align: top;
+    border: 1px solid #C5B4D9;
+	height: 250px;
+    width: 180px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#dhtmlgoodies_mainContainer div p {
+    margin: 5px;
+    padding: 5px;
+    font-weight: bold;
+    color: #C5B4D9;
+    border-radius: 8px;
+}
+
+#dhtmlgoodies_mainContainer ul {
+    width: 152px;
+    height: 160px;
+    border: 0;
+    margin-bottom: 0;
+    overflow: visible;
+    border-radius: 8px;
+}
+
+#dragContent {
+    position: absolute;
+    width: 150px;
+    height: 15px;
+    display: none;
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+}
+
+#dragDropIndicator {
+    position: absolute;
+    width: 7px;
+    height: 10px;
+    display: none;
+    z-index: 1000;
+    margin: 0;
+    padding: 0;
+}
+
+.style1 {
+    color: #A8D5BA; /* Pastel Green for highlights */
+}
